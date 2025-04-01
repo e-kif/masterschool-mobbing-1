@@ -4,7 +4,7 @@ class Rover:
         self.y = y
         self.direction = direction
 
-    def move_forward(self, distance):
+    def move_forward(self, distance=1):
         if self.direction == "N":
             self.y += distance
         elif self.direction == "S":
@@ -43,3 +43,10 @@ class Rover:
 
     def move_backwards(self):
         pass
+
+    def receive_command(self, commands: list[str]):
+        command_mapping = {'F': self.move_forward, 'L': self.turn_left, 'R': self.turn_right, 'B': self.move_backwards}
+        for command in commands:
+            if command in command_mapping.keys():
+                command_mapping[command]
+

@@ -66,3 +66,8 @@ def test_receive_commands():
     assert rover.move_forward(20) == {"x": 0, "y": 20, "d": "N"}
     assert rover.turn_left() == {"x": 0, "y": 20, "d": "W"}
     assert rover.turn_right() == {"x": 0, "y": 20, "d": "N"}
+
+
+def test_command_array():
+    rover = Rover(0, 0, "N")
+    assert rover.receive_command(['F', 'L', 'F', 'R', 'B'])
