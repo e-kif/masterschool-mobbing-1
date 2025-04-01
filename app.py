@@ -4,31 +4,32 @@ class Rover:
         self.y = y
         self.direction = direction
 
-    def move_forward(x, y, direction, distance):
+    def move_forward(self, distance):
         data = {
-            "x": x,
-            "y": y,
-            "d": direction
+            "x": self.x,
+            "y": self.y,
+            "d": self.direction
         }
-        if direction == "N":
-            data["y"] += distance
-        elif direction == "S":
-            data["y"] -= distance
-        elif direction == "E":
-            data["x"] += distance
-        elif direction == "W":
-            data["x"] -= distance
+        if self.direction == "N":
+            self.y += distance
+        elif self.direction == "S":
+            self.y -= distance
+        elif self.direction == "E":
+            self.x += distance
+        elif self.direction == "W":
+            self.x -= distance
         else:
             print("wrong direction....")
         return data
 
-    def turn_right(x, y, direction):
+    def turn_right(self, direction):
         mapping = {
             "N": "E",
             "E": "S",
             "S": "W",
             "W": "N"
         }
+        self.direction = mapping[direction]
         return {"x": x, "y": y, "d": mapping[direction]}
 
     def turn_left(x, y, direction):
