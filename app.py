@@ -21,24 +21,25 @@ class Rover:
             "d": self.direction
         }
 
-    def turn_right(self, direction):
+    def turn_right(self):
         mapping = {
             "N": "E",
             "E": "S",
             "S": "W",
             "W": "N"
         }
-        self.direction = mapping[direction]
-        return {"x": x, "y": y, "d": mapping[direction]}
+        self.direction = mapping[self.direction]
+        return {"x": self.x, "y": self.y, "d": self.direction}
 
-    def turn_left(x, y, direction):
+    def turn_left(self):
         mapping = {
             "N": "W",
             "E": "N",
             "S": "E",
             "W": "S"
         }
-        return {"x": x, "y": y, "d": mapping[direction]}
+        self.direction = mapping[self.direction]
+        return {"x": self.x, "y": self.y, "d": self.direction}
 
     def move_backwards(self):
         pass

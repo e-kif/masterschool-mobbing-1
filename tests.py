@@ -64,5 +64,5 @@ def test_rover_commands():
 def test_receive_commands():
     rover = Rover(0, 0, "N")
     assert rover.move_forward(20) == {"x": 0, "y": 20, "d": "N"}
-    assert rover.turn_left(20) == {"x": 0, "y": 20, "d": "N"}
-    assert rover.turn_right(20) == {"x": 0, "y": 20, "d": "N"}
+    assert rover.turn_left() == {"x": 0, "y": 20, "d": "W"}
+    assert rover.turn_right() == {"x": 0, "y": 20, "d": "N"}
