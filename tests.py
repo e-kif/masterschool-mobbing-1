@@ -71,3 +71,8 @@ def test_receive_commands():
 def test_command_array():
     rover = Rover(0, 0, "N")
     assert rover.receive_command(['F', 'L', 'F', 'R', 'B'])
+    assert rover.coordinates == (-1, 0, "N")
+
+
+def test_get_coordinates():
+    pass
