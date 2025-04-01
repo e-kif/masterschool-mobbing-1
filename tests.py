@@ -47,3 +47,7 @@ def test_move_backward():
     assert move_backwards(0, 0, "E", 20) == {"x": 20, "y": 0, "d": "E"}
     assert move_backwards(0, 0, "E", 10) == {"x": 10, "y": 0, "d": "E"}
     assert move_backwards(0, 10, "E", 10) == {"x": 10, "y": 10, "d": "E"}
+
+
+def test_rover_commands():
+    # assert command_array == [move_forward, turn_right, turn_left, move_backward]
