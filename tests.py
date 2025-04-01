@@ -33,7 +33,7 @@ from app import Rover
 #     assert rover.turn_left(0, 10, "W") == {"x": 0, "y": 10, "d": "S"}
 
 
-#def test_move_backward():
+# def test_move_backward():
 #    assert move_backwards(0, 0, "N", 20) == {"x": 0, "y": -20, "d": "N"}
 #    assert move_backwards(0, 0, "N", 10) == {"x": 0, "y": -10, "d": "N"}
 #    assert move_backwards(0, 10, "N", 10) == {"x": 0, "y": 0, "d": "N"}
@@ -63,4 +63,6 @@ def test_rover_commands():
 
 def test_receive_commands():
     rover = Rover(0, 0, "N")
-
+    assert rover.move_forward(20) == {"x": 0, "y": 20, "d": "N"}
+    assert rover.turn_left(20) == {"x": 0, "y": 20, "d": "N"}
+    assert rover.turn_right(20) == {"x": 0, "y": 20, "d": "N"}

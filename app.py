@@ -5,11 +5,6 @@ class Rover:
         self.direction = direction
 
     def move_forward(self, distance):
-        data = {
-            "x": self.x,
-            "y": self.y,
-            "d": self.direction
-        }
         if self.direction == "N":
             self.y += distance
         elif self.direction == "S":
@@ -20,7 +15,11 @@ class Rover:
             self.x -= distance
         else:
             print("wrong direction....")
-        return data
+        return {
+            "x": self.x,
+            "y": self.y,
+            "d": self.direction
+        }
 
     def turn_right(self, direction):
         mapping = {
