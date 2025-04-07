@@ -50,3 +50,5 @@ class Rover:
             if command in command_mapping.keys():
                 command_mapping[command]
 
+    def coordinates(self):
+        return self.x, self.y, self.direction
