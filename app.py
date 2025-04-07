@@ -41,14 +41,31 @@ class Rover:
         self.direction = mapping[self.direction]
         return {"x": self.x, "y": self.y, "d": self.direction}
 
-    def move_backwards(self):
-        pass
+    def move_backwards(self, distance=1):
+        if self.direction == "N":
+            self.y -= distance
+        elif self.direction == "S":
+            self.y += distance
+        elif self.direction == "E":
+            self.x -= distance
+        elif self.direction == "W":
+            self.x += distance
+        else:
+            print("wrong direction....")
+        return {
+            "x": self.x,
+            "y": self.y,
+            "d": self.direction
+        }
 
     def receive_command(self, commands: list[str]):
-        command_mapping = {'F': self.move_forward, 'L': self.turn_left, 'R': self.turn_right, 'B': self.move_backwards}
+        command_mapping = {'F': self.move_forward, 'L': self.turn_left,
+                           'R': self.turn_right, 'B': self.move_backwards}
         for command in commands:
             if command in command_mapping.keys():
-                command_mapping[command]
+                command_mapping[command]()
+        return self
 
+    @property
     def coordinates(self):
         return self.x, self.y, self.direction

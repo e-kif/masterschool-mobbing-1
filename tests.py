@@ -69,9 +69,21 @@ def test_receive_commands():
 
 
 def test_command_array():
-    rover = Rover(0, 0, "N")
-    assert rover.receive_command(['F', 'L', 'F', 'R', 'B'])
-    assert rover.coordinates == (-1, 0, "N")
+
+    assert Rover(0, 0, "N").receive_command(
+        ['F']).coordinates == (0, 1, "N")
+
+    assert Rover(0, 0, "N").receive_command(
+        ['B']).coordinates == (0, -1, "N")
+
+    assert Rover(0, 0, "N").receive_command(
+        ['L']).coordinates == (0, 0, "W")
+
+    assert Rover(0, 0, "N").receive_command(
+        ['R']).coordinates == (0, 0, "E")
+
+    assert Rover(0, 0, "N").receive_command(
+        ['F', 'L', 'F', 'R', 'B']).coordinates == (-1, 0, "N")
 
 
 def test_get_coordinates():
