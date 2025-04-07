@@ -65,9 +65,9 @@ def test_rover_commands():
 
 def test_receive_commands():
     rover = Rover(0, 0, "N")
-    assert rover.move_forward(20) == {"x": 0, "y": 20, "d": "N"}
-    assert rover.turn_left() == {"x": 0, "y": 20, "d": "W"}
-    assert rover.turn_right() == {"x": 0, "y": 20, "d": "N"}
+    assert rover.move_forward(20).coordinates == (0, 20, 'N')
+    assert rover.turn_left().coordinates == (0, 20, 'W')
+    assert rover.turn_right().coordinates == (0, 20, 'N')
 
 
 def test_command_array():
@@ -88,12 +88,22 @@ def test_command_array():
 
     assert Rover(0, 0, "E").receive_command(["F", "B"]).coordinates == (0, 0, "E")
 
+    assert Rover(0, 0, "W").receive_command(["F", "B"]).coordinates == (0, 0, "W")
+
     assert Rover(0, 0, "N").receive_command(
         ['F', 'L', 'F', 'R', 'B']).coordinates == (-1, 0, "N")
+
 
 def test_rover_init():
     with pytest.raises(RuntimeError):
         Rover(0, 0, "X")
+
+    with pytest.raises(RuntimeError):
+        Rover('one', 0, 'N')
+
+    with pytest.raises(RuntimeError):
+        Rover(0, 'zero', 'N')
+
 
 def test_get_coordinates():
     pass

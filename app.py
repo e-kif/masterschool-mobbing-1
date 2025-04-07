@@ -2,6 +2,10 @@ class Rover:
     def __init__(self, x, y, direction):
         if direction not in "NESW":
             raise RuntimeError("Invalid Direction")
+        if not isinstance(x, int):
+            raise RuntimeError("Invalid x coordinate type")
+        if not isinstance(y, int):
+            raise RuntimeError("Invalid x coordinate type")
         self.x = x
         self.y = y
         self.direction = direction
@@ -15,13 +19,7 @@ class Rover:
             self.x += distance
         elif self.direction == "W":
             self.x -= distance
-        else:
-            print("wrong direction....")
-        return {
-            "x": self.x,
-            "y": self.y,
-            "d": self.direction
-        }
+        return self
 
     def turn_right(self):
         mapping = {
@@ -31,7 +29,7 @@ class Rover:
             "W": "N"
         }
         self.direction = mapping[self.direction]
-        return {"x": self.x, "y": self.y, "d": self.direction}
+        return self
 
     def turn_left(self):
         mapping = {
@@ -41,7 +39,7 @@ class Rover:
             "W": "S"
         }
         self.direction = mapping[self.direction]
-        return {"x": self.x, "y": self.y, "d": self.direction}
+        return self
 
     def move_backwards(self, distance=1):
         if self.direction == "N":
@@ -52,13 +50,7 @@ class Rover:
             self.x -= distance
         elif self.direction == "W":
             self.x += distance
-        else:
-            print("wrong direction....")
-        return {
-            "x": self.x,
-            "y": self.y,
-            "d": self.direction
-        }
+        return self
 
     def receive_command(self, commands: list[str]):
         command_mapping = {'F': self.move_forward, 'L': self.turn_left,
