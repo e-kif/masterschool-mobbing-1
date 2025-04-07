@@ -1,3 +1,5 @@
+import pytest
+
 from app import Rover
 
 
@@ -82,9 +84,16 @@ def test_command_array():
     assert Rover(0, 0, "N").receive_command(
         ['R']).coordinates == (0, 0, "E")
 
+    assert Rover(0, 0, "S").receive_command(["F", "B"]).coordinates == (0, 0, "S")
+
+    assert Rover(0, 0, "E").receive_command(["F", "B"]).coordinates == (0, 0, "E")
+
     assert Rover(0, 0, "N").receive_command(
         ['F', 'L', 'F', 'R', 'B']).coordinates == (-1, 0, "N")
 
+def test_rover_init():
+    with pytest.raises(RuntimeError):
+        Rover(0, 0, "X")
 
 def test_get_coordinates():
     pass

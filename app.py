@@ -1,5 +1,7 @@
 class Rover:
     def __init__(self, x, y, direction):
+        if direction not in "NESW":
+            raise RuntimeError("Invalid Direction")
         self.x = x
         self.y = y
         self.direction = direction
